@@ -12,6 +12,18 @@ datasource db {
   provider = "postgresql"
 }
 
+enum Frequency {
+  WEEKLY
+  MONTHLY
+}
+
+enum CategoryType {
+  FIXED
+  DEBT
+  HORMIGA
+  OTHER
+}
+
 model User {
   id      Int       @id @default(autoincrement())
   name    String
@@ -23,8 +35,8 @@ model User {
 
 model Income {
   id         Int    @id @default(autoincrement())
-  type       String
-  qt         Int
+  frequency Frequency
+  qt         Decimal
   user       User   @relation(fields: [userIncome], references: [id])
   userIncome Int
 }
@@ -32,7 +44,7 @@ model Income {
 model Expense {
   id          Int      @id @default(autoincrement())
   type        String
-  value       Int
+  value       Decimal
   user        User     @relation(fields: [userExpense], references: [id])
   userExpense Int
   category    Category @relation(fields: [categoryId], references: [id])
@@ -42,5 +54,6 @@ model Expense {
 model Category {
   id      Int       @id @default(autoincrement())
   name    String
+  category CategoryType
   expense Expense[]
 }
