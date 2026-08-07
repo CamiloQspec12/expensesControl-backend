@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
-import allRoutes from './routes/expensesRoutes.js'
+import allRoutes from './routes/allRoutes.js'
 
 const app = express()
 const middleware = cors()
