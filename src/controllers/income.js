@@ -1,4 +1,3 @@
-import prisma from "../prisma";
 
 const getIncome = async (req, res) => {
     try {
@@ -27,3 +26,5 @@ const createIncome = async (req, res) => {
         res.status(500).json({message: 'Error creating income'})
     }
 }
+
+export {getIncome, createIncome}

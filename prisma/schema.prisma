@@ -26,10 +26,13 @@ enum CategoryType {
 model User {
   id      Int       @id @default(autoincrement())
   name    String
+  email String @unique
   gender  String
   dob     DateTime
+  password String
   income  Income[]
   expense Expense[]
+
 }
 
 model Income {

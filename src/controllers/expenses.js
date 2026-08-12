@@ -1,4 +1,3 @@
-import prisma from "../prisma"
 
 const getExpenses = async (req, res) => {
     try {
@@ -12,7 +11,7 @@ const getExpenses = async (req, res) => {
     }
 }
 
-const createExpense = async (req, res) => {
+const createExpenses = async (req, res) => {
     try {
 
         const expenses = await prisma.expense.create({data: {
@@ -28,3 +27,5 @@ const createExpense = async (req, res) => {
         res.status(200).json({message: "Expense created"})
     }
 }
+
+export { createExpenses,  getExpenses}
