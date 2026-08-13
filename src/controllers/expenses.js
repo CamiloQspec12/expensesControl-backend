@@ -1,3 +1,4 @@
+import prisma from "../prisma.js";
 
 const getExpenses = async (req, res) => {
     try {

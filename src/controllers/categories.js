@@ -1,3 +1,6 @@
+import prisma from "../prisma.js";
+
+
 const createCategories = async (req, res) => {
     try{
         const categories = await prisma.category.create({ data: {

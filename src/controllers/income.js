@@ -1,3 +1,5 @@
+import prisma from "../prisma.js";
+
 
 const getIncome = async (req, res) => {
     try {

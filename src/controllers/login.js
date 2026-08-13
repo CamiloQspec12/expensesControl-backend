@@ -1,6 +1,6 @@
-import prisma from "../prisma"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
+import prisma from "../prisma.js";
 
 const login = async (req, res) => {
     try{
