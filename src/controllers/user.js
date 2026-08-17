@@ -3,7 +3,8 @@ import prisma from "../prisma.js";
 
 const getUser = async (req, res) => {
     try {
-        const user = await prisma.user.findMany({
+        const user = await prisma.user.findUnique({
+            where: { id: Number(req.params.id) },
             select: {
                 name: true,
                 email: true,
@@ -14,6 +15,7 @@ const getUser = async (req, res) => {
                 expense: true
             }
         })
+        res.status(200).json(user)
     } catch (e){
         res.status(500).json({message: "Error to get user"})
     }

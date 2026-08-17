@@ -21,7 +21,7 @@ router.get('/incomes', getIncome)
 
 router.post('/incomes', createIncome)
 
-router.get('/users', getUser)
+router.get('/users/:id', getUser)
 
 router.post('/users', createUser)
 

@@ -7,8 +7,9 @@ const createCategories = async (req, res) => {
             name: req.body.name,
             category: req.body.category
         }})
-        res.status(200).json({message: "Category create successfully"})
+        res.status(201).json({message: "Category create successfully"})
     }catch (e){
+        console.log(e)
         res.status(500).json({error: "Error fetching the categories"})
     }
 }
