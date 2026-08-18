@@ -2,12 +2,15 @@ import prisma from "../prisma.js";
 
 const getExpenses = async (req, res) => {
     try {
-    const expenses = await prisma.expenses.findMany({
-        user: true,
-        category: true
-    })
-    res(expenses).json()
-    }catch (e){
+        const expenses = await prisma.expense.findMany({
+            include: {
+                user: true,
+                category: true
+            }
+        })
+        res.status(200).json(expenses)
+    } catch (e){
+        console.log(e)
         res.status(500).json({message: "Error getting the Expenses"})
     }
 }

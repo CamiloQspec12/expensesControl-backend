@@ -4,6 +4,7 @@ import { getCategories , createCategories } from '../controllers/categories.js'
 import { getExpenses , createExpenses } from '../controllers/expenses.js'
 import { getIncome , createIncome } from '../controllers/income.js'
 import { getUser, createUser } from "../controllers/user.js"
+import { auth } from "../middleware/auth.js";
 import { login } from "../controllers/login.js";
 
 const router = Router();
@@ -13,7 +14,7 @@ router.get('/categories', getCategories)
 
 router.post('/categories', createCategories)
 
-router.get('/expenses', getExpenses)
+router.get('/expenses', auth, getExpenses) // trying the auth
 
 router.post('/expenses', createExpenses)
 
