@@ -4,6 +4,7 @@ import prisma from "../prisma.js";
 const getIncome = async (req, res) => {
     try {
         const income = await prisma.income.findMany({
+            where: { userIncome: req.userId },
             include: {
                 user: true
             }
@@ -21,7 +22,7 @@ const createIncome = async (req, res) => {
         const income = await prisma.income.create({data: {
             qt: req.body.qt,
             frequency: req.body.frequency,
-            userIncome: req.body.userIncome
+            userIncome: req.userId
         }})
         res.status(201).json({ message: "Income create succesfully"})
     }

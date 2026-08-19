@@ -3,6 +3,7 @@ import prisma from "../prisma.js";
 const getExpenses = async (req, res) => {
     try {
         const expenses = await prisma.expense.findMany({
+            where: { userExpense: req.userId },
             include: {
                 user: true,
                 category: true
@@ -20,7 +21,7 @@ const createExpenses = async (req, res) => {
         const expenses = await prisma.expense.create({data: {
             type: req.body.type,
             value: req.body.value,
-            userExpense: req.body.userExpense,
+            userExpense: req.userId,
             categoryId: req.body.categoryId
         }})
         res.status(201).json({message: "Created succesfully..."})

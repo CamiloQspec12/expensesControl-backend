@@ -10,19 +10,19 @@ import { login } from "../controllers/login.js";
 const router = Router();
 
 
-router.get('/categories', getCategories)
+router.get('/categories', auth, getCategories)
 
-router.post('/categories', createCategories)
+router.post('/categories', auth, createCategories)
 
-router.get('/expenses', auth, getExpenses) // trying the auth
+router.get('/expenses', auth, getExpenses)
 
-router.post('/expenses', createExpenses)
+router.post('/expenses', auth, createExpenses)
 
-router.get('/incomes', getIncome)
+router.get('/incomes', auth, getIncome)
 
-router.post('/incomes', createIncome)
+router.post('/incomes', auth, createIncome)
 
-router.get('/users/:id', getUser)
+router.get('/users/:id', auth, getUser)
 
 router.post('/users', createUser)
 
