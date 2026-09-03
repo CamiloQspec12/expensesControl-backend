@@ -27,7 +27,7 @@ const createExpenses = async (req, res) => {
         res.status(201).json({message: "Created succesfully..."})
     } catch(e){
         console.log(e)
-        res.status(500).json({message: "Erro creating the expense"})
+        res.status(500).json({message: "Error creating the expense"})
     }
 }
 

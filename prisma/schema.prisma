@@ -37,6 +37,7 @@ model User {
 
 model Income {
   id         Int    @id @default(autoincrement())
+  source String
   frequency Frequency
   qt         Decimal
   user       User   @relation(fields: [userIncome], references: [id])
