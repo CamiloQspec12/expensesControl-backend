@@ -7,7 +7,8 @@ const getExpenses = async (req, res) => {
             include: {
                 user: true,
                 category: true
-            }
+            },
+            orderBy: { id: 'desc' }
         })
         res.status(200).json(expenses)
     } catch (e){

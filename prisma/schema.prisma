@@ -42,6 +42,7 @@ model Income {
   qt         Decimal
   user       User   @relation(fields: [userIncome], references: [id])
   userIncome Int
+  createAt DateTime @default(now())
 }
 
 model Expense {

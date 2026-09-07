@@ -7,7 +7,8 @@ const getIncome = async (req, res) => {
             where: { userIncome: req.userId },
             include: {
                 user: true
-            }
+            },
+            orderBy: { id: 'desc' }
         })
         res.status(200).json(income)
     }
