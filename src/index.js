@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000
 const configCors = {
     origin: [
         'http://localhost:5173',
-        'https://expenses-control-frontend.vercel.app'
+        'https://expenses-control-frontend-sigma.vercel.app'
     ]
 }
 
