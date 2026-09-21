@@ -8,10 +8,12 @@ const PORT = process.env.PORT || 3000
 
 
 const configCors = {
-    origin: [
-        'http://localhost:5173',
-        'https://expenses-control-frontend-sigma.vercel.app'
-    ]
+    origin: (origin, callback) => {
+    if (!origin) return callback(null, true) // permite Postman, curl, health checks sin origin
+    const allowed = origin === 'http://localhost:5173' ||
+                     /^https:\/\/expenses-control-frontend.*\.vercel\.app$/.test(origin)
+    callback(allowed ? null : new Error('No permitido por CORS'), allowed)
+  }
 }
 
 
