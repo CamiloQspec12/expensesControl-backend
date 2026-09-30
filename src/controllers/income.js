@@ -19,11 +19,29 @@ const getIncome = async (req, res) => {
 
 
 const createIncome = async (req, res) => {
+
+    const { qt, source, frequency } = req.body
+
+    const validFrequency = ['WEEKLY', 'MONTHLY']
+
+    if(!qt || typeof qt !== "number" || qt <= 0  ) {
+        return res.status(400).json({message: "La cantidad tiene que ser mayor a 0"})
+    }
+
+    if(!source || typeof source !== "string" || source.trim().length <= 3 ){
+        return res.status(400).json({message: "El nombre del ingreso tiene que ser mayor a 3 "})
+    }
+
+    if(!frequency || !validFrequency.includes(frequency)){
+        return res.status(400).json({message: "La frecuencia del ingreso solo puede ser WEEKLY o MONTHLY"})
+    }
+
+
     try {
         const income = await prisma.income.create({data: {
-            qt: req.body.qt,
-            source: req.body.source,
-            frequency: req.body.frequency,
+            qt: qt,
+            source: source,
+            frequency: frequency,
             userIncome: req.userId
         }})
         res.status(201).json({ message: "Income create succesfully"})
