@@ -38,10 +38,10 @@ const createIncome = async (req, res) => {
 
 
     try {
-        const income = await prisma.income.create({data: {
-            qt: qt,
-            source: source,
-            frequency: frequency,
+        await prisma.income.create({data: {
+            qt,
+            source,
+            frequency,
             userIncome: req.userId
         }})
         res.status(201).json({ message: "Income create succesfully"})

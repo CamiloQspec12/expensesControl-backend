@@ -5,7 +5,7 @@ import { getExpenses , createExpenses } from '../controllers/expenses.js'
 import { getIncome , createIncome } from '../controllers/income.js'
 import { getUser, createUser } from "../controllers/user.js"
 import { auth } from "../middleware/auth.js";
-import { login } from "../controllers/login.js";
+import { login, signUp } from "../controllers/login.js";
 
 const router = Router();
 
@@ -27,6 +27,9 @@ router.get('/users/:id', auth, getUser)
 router.post('/users', createUser)
 
 router.post('/login', login)
+
+router.post('/signUp', signUp)
+
 
 
 

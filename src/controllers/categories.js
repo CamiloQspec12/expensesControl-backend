@@ -16,9 +16,9 @@ const createCategories = async (req, res) => {
     }
 
     try{
-        const categories = await prisma.category.create({ data: {
-            name: name,
-            category: category
+        await prisma.category.create({ data: {
+            name,
+            category
         }})
         res.status(201).json({message: "Category create successfully"})
     }catch (e){
