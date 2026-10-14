@@ -44,8 +44,8 @@ const signUp = async(req, res) => {
         return res.status(400).json({message:"El campo genero es obligatorio"})
     }
 
-    if(!dob){
-        return res.status(400).json({message:"la fecha de nacimineto es obligatoria"})
+    if(!dob || isNaN(new Date(dob)) || new Date(dob) > new Date()){
+        return res.status(400).json({message:"la fecha de nacimineto no es valida"})
     }
     
 
