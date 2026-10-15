@@ -11,7 +11,7 @@ const configCors = {
     origin: (origin, callback) => {
     if (!origin) return callback(null, true) // permite Postman, curl, health checks sin origin
     const allowed = origin === 'http://localhost:5173' ||
-                     /^https:\/\/expenses-control-frontend.*\.vercel\.app$/.test(origin)
+                     /^https:\/\/expenses-control.*\.vercel\.app$/.test(origin)
     callback(allowed ? null : new Error('No permitido por CORS'), allowed)
   }
 }
